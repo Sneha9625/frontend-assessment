@@ -169,6 +169,10 @@ button{
   display:block;
 }
 
+.tab-btn:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 3px;
+}
 /* TABLET */
 
 @media(min-width:768px){

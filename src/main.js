@@ -126,15 +126,15 @@ document.querySelector("#app").innerHTML = `
 
       </div>
 
-      <div
+      <button
         class="swiper-button-next"
         aria-label="Next slide"
-      ></div>
+      ></button>
 
-      <div
+      <button
         class="swiper-button-prev"
         aria-label="Previous slide"
-      ></div>
+      ></button>
 
       <div class="swiper-pagination"></div>
 
@@ -321,86 +321,60 @@ new Swiper(".heroSwiper", {
 
 });
 
-const tabs = document.querySelectorAll(".tab-btn");
-
+const tabs = Array.from(document.querySelectorAll(".tab-btn"));
 const contents = document.querySelectorAll(".tab-content");
 
 function activateTab(tab) {
 
-  tabs.forEach((btn) => {
-
+  tabs.forEach(btn => {
     btn.classList.remove("active-tab");
-
     btn.setAttribute("aria-selected", "false");
-
-    btn.setAttribute("tabindex", "-1");
-
   });
 
-  contents.forEach((content) => {
-
-    content.classList.remove("active-content");
-
-    content.hidden = true;
-
+  contents.forEach(c => {
+    c.classList.remove("active-content");
+    c.hidden = true;
   });
 
   tab.classList.add("active-tab");
-
   tab.setAttribute("aria-selected", "true");
 
-  tab.setAttribute("tabindex", "0");
+  const panel = document.getElementById(tab.dataset.tab);
+  panel.classList.add("active-content");
+  panel.hidden = false;
 
   tab.focus();
-
-  const activePanel = document.getElementById(tab.dataset.tab);
-
-  activePanel.classList.add("active-content");
-
-  activePanel.hidden = false;
-
 }
 
 tabs.forEach((tab, index) => {
 
+  // CLICK
   tab.addEventListener("click", () => {
-
     activateTab(tab);
-
   });
 
+  // KEYBOARD
   tab.addEventListener("keydown", (e) => {
 
-    let newIndex = index;
-
-    // ENTER OR SPACE
+    let nextIndex;
 
     if (e.key === "Enter" || e.key === " ") {
-
       e.preventDefault();
-
       activateTab(tab);
-
     }
-
-    // RIGHT ARROW
 
     if (e.key === "ArrowRight") {
-
-      newIndex = (index + 1) % tabs.length;
-
-      tabs[newIndex].focus();
-
+      e.preventDefault();
+      nextIndex = (index + 1) % tabs.length;
+      activateTab(tabs[nextIndex]);
+      tabs[nextIndex].focus();
     }
 
-    // LEFT ARROW
-
     if (e.key === "ArrowLeft") {
-
-      newIndex = (index - 1 + tabs.length) % tabs.length;
-
-      tabs[newIndex].focus();
-
+      e.preventDefault();
+      nextIndex = (index - 1 + tabs.length) % tabs.length;
+      activateTab(tabs[nextIndex]);
+      tabs[nextIndex].focus();
     }
 
   });
