@@ -6,11 +6,11 @@ A responsive frontend assessment project built using HTML, CSS, JavaScript, and 
 
 ## 🚀 Live Demo
 
-Live Site:
-https://your-vercel-link.vercel.app
+Live Site:https://frontend-assessment-psi-lemon.vercel.app/
 
-GitHub Repository:
-https://github.com/yourusername/frontend-assessment
+
+GitHub Repository:https://github.com/Sneha9625/frontend-assessment
+
 
 ---
 
@@ -73,41 +73,6 @@ src/
 
 ---
 
-## ⚙️ Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/frontend-assessment.git
-```
-
-Move into project folder:
-
-```bash
-cd frontend-assessment
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run development server:
-
-```bash
-npm run dev
-```
-
----
-
-## 🏗️ Build Project
-
-```bash
-npm run build
-```
-
----
 
 ## 🎯 Project Objective
 
